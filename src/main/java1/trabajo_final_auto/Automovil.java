@@ -10,7 +10,7 @@ public class Automovil {
 	private String paísFabricación;
 	private String cilindraje;
 	private String precio;
-	private final String estado = "Disponible";
+	private String estado = "Disponible";
 
 	public String getPlaca() {
 		return placa;

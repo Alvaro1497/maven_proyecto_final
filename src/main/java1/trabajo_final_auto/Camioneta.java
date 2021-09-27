@@ -10,18 +10,14 @@ public class Camioneta {
 	private String paísFabricación;
 	private String cilindraje;
 	private String precio;
-	private String estado;
+	private String estado = "Disponible";
 
-	public Camioneta(String t1, String t2, String t3, String t4, String t5, String t6, String t7, String t8) {
-		placa = t1;
-		modelo = t2;
-		marca = t3;
-		añoDefabricación = t4;
-		paísFabricación = t5;
-		cilindraje = t6;
-		precio = t7;
-		peso = t8;
-		estado = "DSIPONIBLE";
+	public String getPeso() {
+		return peso;
+	}
+
+	public void setPeso(String peso) {
+		this.peso = peso;
 	}
 
 	public String getPlaca() {
@@ -86,14 +82,6 @@ public class Camioneta {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-
-	public String getPeso() {
-		return peso;
-	}
-
-	public void setPeso(String peso) {
-		this.peso = peso;
 	}
 
 	@Override

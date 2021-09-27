@@ -23,6 +23,7 @@ public class Main {
 		String D1, D2, D3;
 		String estado;
 		String placAu = null;
+		String placCa = null;
 
 		int pocicionDisponible = 0;
 		LocalDate diaHoy = LocalDate.ofYearDay(2021, 11);
@@ -59,6 +60,7 @@ public class Main {
 		autoc2.setFecha("2018");
 
 		Automovil au = new Automovil();
+		Camioneta ca = new Camioneta();
 
 		do {
 			System.out.println("");
@@ -200,9 +202,20 @@ public class Main {
 					case "2":
 						System.out.println("Peso soportado ");
 						T9 = sc.nextLine();
-//						Camioneta ca = new Camioneta(T1, T2, T3, T4, T5, T6, T7, T8);
-//						System.out.println("Guardado con Exito");
+						ca.setPlaca(T1);
+						ca.setMarca(T2);
+						ca.setModelo(T3);
+						ca.setAñoDefabricación(T4);
+						ca.setPaísFabricación(T5);
+						ca.setCilindraje(T6);
+						ca.setPrecio(T7);
+						ca.setPeso(T9);
+
+						placCa = ca.getPlaca();
+						System.out.println("Guardado con Exito");
 						break;
+//						
+//						;
 
 					}
 
@@ -248,6 +261,7 @@ public class Main {
 						System.out.println("No se encontro la placa en la base de datos reservada .... ");
 						System.out.println(" ---------------------------------------------------------- ");
 						System.out.println("Buscando placa en los registros actuales");
+
 						if (D1 == placAu) {
 							System.out.println(" Desea alquilar el vehiculo ? (SI / NO) ");
 							String cont = sc2.nextLine();
@@ -257,12 +271,25 @@ public class Main {
 								au.setEstado("Alquilado");
 
 							}
+							System.out.println("Placa: " + au.getPlaca() + " Modelo: " + au.getModelo() + " Estado: "
+									+ au.getEstado() + " año fabricacion: " + au.getAñoDefabricación()
+									+ " País Fabricación" + au.getPaísFabricación() + " Cilindraje "
+									+ au.getCilindraje() + " Precio " + au.getPrecio());
+						} else if (D1 == placCa) {
+							System.out.println(" Desea alquilar la Camioneta ? (SI / NO) ");
+							String cont = sc2.nextLine();
+							if (cont.equals("si")) {
+								System.out.println("Camioneta alquilado con exito");
+								// cambiamos estado
+								ca.setEstado("Alquilado");
+
+							}
+							System.out.println("Placa: " + ca.getPlaca() + " Modelo: " + ca.getModelo() + " Estado: "
+									+ ca.getEstado() + " año fabricacion: " + ca.getAñoDefabricación()
+									+ " País Fabricación" + ca.getPaísFabricación() + " Cilindraje "
+									+ ca.getCilindraje() + " Precio " + ca.getPrecio());
 
 						}
-						System.out.println("Placa: " + au.getPlaca() + " Modelo: " + au.getModelo() + " Estado: "
-								+ au.getEstado() + " año fabricacion: " + au.getAñoDefabricación() + " País Fabricación"
-								+ au.getPaísFabricación() + " Cilindraje " + au.getCilindraje() + " Precio "
-								+ au.getPrecio());
 
 					}
 
@@ -303,12 +330,4 @@ public class Main {
 		return Arrays.asList(string).contains(buscarplaca5);
 	}
 
-//	///System.out.println(" Desea alquilar el vehiculo ? (SI / NO) ");
-//	String cont =sc2.nextLine();
-//	if(cont.equals("si")) {
-//		System.out.println("Automovil alquilado con exito");
-//		
-//	}else {
-//		System.out.println(" Automovil NO alquilado ");
-//	}
 }
