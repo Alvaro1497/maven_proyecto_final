@@ -17,7 +17,7 @@ public class Main {
 		String teclado3;
 		String tecladoc4;
 		String tecladoc5;
-		String T1, T2, T3, T4, T5, T6, T7, T8, T9;
+		String T1, T2, T3, T4, T5, T6, T7, T8, T9 ,t10;
 		String D1, D2, D3;
 		String estado;
 		String placAu = null;
@@ -42,6 +42,10 @@ public class Main {
 		autoc.setFechaInicio(diaHoy);
 		autoc.setEstado(true);
 		autoc.setFecha("2020");
+		autoc.setPrestamo("prestamo");
+		
+		
+		
 
 		AutoConsulta autoc1 = new AutoConsulta();
 		autoc1.setPlaca("PCT-1434");
@@ -50,6 +54,8 @@ public class Main {
 		autoc1.setFechaInicio(diaHoy1);
 		autoc1.setEstado(true);
 		autoc1.setFecha("2019");
+		autoc1.setPrestamo("prestamo");;
+		
 
 		AutoConsulta autoc2 = new AutoConsulta();
 		autoc2.setPlaca("PFQ-0445");
@@ -58,6 +64,7 @@ public class Main {
 		autoc2.setFechaInicio(diaHoy2);
 		autoc2.setEstado(true);
 		autoc2.setFecha("2018");
+		autoc2.setPrestamo("aprovado");
 
 		Automovil au = new Automovil();
 		Camioneta ca = new Camioneta();
@@ -85,7 +92,7 @@ public class Main {
 						System.out.println("Placa = " + autoc1.getPlaca() + "- Modelo - " + autoc1.getModelo()
 								+ " -Marca- " + autoc1.getMarca() + " -Año- " + autoc1.getFecha() + "-Fecha Entrega- "
 								+ autoc1.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-								+ " -Estado -" + autoc1.estado);
+								+ " -Estado -" + autoc1 + "nombre "  +autoc1.getPrestamo().toUpperCase()) ;
 
 					}
 					if (teclado.equals("KIA") || teclado.equals("Sportage")) {
@@ -179,6 +186,8 @@ public class Main {
 					T6 = sc.nextLine();
 					System.out.println("Ingrese Avalúo ");
 					T7 = sc.nextLine();
+					System.out.println("Ingrese nombre ");
+					t10 = sc.nextLine();
 
 					System.out.println(" *** QUE TIPO DE AUTO ES: 1)Automovil - 2)Camioneta *** ");
 					tecladoc5 = sc.nextLine();
@@ -194,6 +203,7 @@ public class Main {
 						au.setCilindraje(T6);
 						au.setPrecio(T7);
 						au.setNumPuertas(T8);
+						au.setPrestamo(t10);
 
 						placAu = au.getPlaca();
 						System.out.println("Guardado con Exito");
@@ -218,6 +228,7 @@ public class Main {
 
 				}
 				if (teclado3.equals("B")) {
+
 					System.out.println("iNGRESE PLACA DEL AUTOMOVIL");
 					D1 = sc.nextLine();
 					// ingreso aqui la placa lo comparara con la placa quemada y me mostrara si esta
@@ -231,7 +242,7 @@ public class Main {
 						System.out.println("Placa: " + autoc.getPlaca() + " Modelo: " + autoc.getModelo() + " Estado: "
 								+ estado + " Fecha Entrega: "
 								+ autoc.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-								+ " Reservado por: " + autoc.getCedula());
+								+ " Reservado por: " + autoc.getCedula()+autoc.getPrestamo().toUpperCase());
 					} else if (placa2(autoc1.getPlaca(), D1)) {
 						if (autoc1.getEstado() == true) {
 							estado = "disponible";
@@ -241,7 +252,7 @@ public class Main {
 						System.out.println("Placa: " + autoc1.getPlaca() + " Modelo: " + autoc1.getModelo()
 								+ " Estado: " + estado + " Fecha Entrega: "
 								+ autoc1.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-								+ " Reservado por: " + autoc1.getCedula());
+								+ " Reservado por: " + autoc1.getCedula()+autoc1.getPrestamo().toUpperCase());
 
 					} else if (placa3(autoc2.getPlaca(), D1)) {
 						if (autoc2.getEstado() == true) {
@@ -252,7 +263,7 @@ public class Main {
 						System.out.println("Placa: " + autoc2.getPlaca() + " Modelo: " + autoc2.getModelo()
 								+ " Estado: " + estado + " Fecha Entrega: "
 								+ autoc2.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-								+ " Reservado por: " + autoc2.getCedula());
+								+ " Reservado por: " + autoc2.getCedula()+autoc2.getPrestamo().toUpperCase());
 					} else {
 						System.out.println("No se encontro la placa en la base de datos reservada .... ");
 						System.out.println(" ---------------------------------------------------------- ");
@@ -266,11 +277,12 @@ public class Main {
 								au.setEstado("Alquilado");
 
 							}
-							System.out.println("Placa: " + au.getPlaca() + " Modelo: " + au.getModelo() + " Estado: "
-									+ au.getEstado() + " año fabricacion: " + au.getAñoDefabricación()
-									+ " País Fabricación" + au.getPaísFabricación() + " Cilindraje "
-									+ au.getCilindraje() + " Precio " + au.getPrecio());
+
 						}
+						System.out.println("Placa: " + au.getPlaca() + " Modelo: " + au.getModelo() + " Estado: "
+								+ au.getEstado() + " año fabricacion: " + au.getAñoDefabricación() + " País Fabricación"
+								+ au.getPaísFabricación() + " Cilindraje " + au.getCilindraje() + " Precio "
+								+ au.getPrecio()+ " Prestamo " +au.getPrestamo().toUpperCase());
 
 					}
 

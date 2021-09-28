@@ -12,6 +12,15 @@ public class AutoConsulta {
 	private String cedula;
 	private LocalDate fechafin;
 	private String fecha;
+	private String prestamo;
+
+	public String getPrestamo() {
+		return prestamo;
+	}
+
+	public void setPrestamo(String prestamo) {
+		this.prestamo = prestamo;
+	}
 
 	public String getFecha() {
 		return fecha;

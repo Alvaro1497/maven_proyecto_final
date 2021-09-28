@@ -11,7 +11,15 @@ public class Automovil {
 	private String cilindraje;
 	private String precio;
 	private String estado = "Disponible";
-	
+	private String prestamo;
+
+	public String getPrestamo() {
+		return prestamo;
+	}
+
+	public void setPrestamo(String prestamo) {
+		this.prestamo = prestamo;
+	}
 
 	public String getPlaca() {
 		return placa;
