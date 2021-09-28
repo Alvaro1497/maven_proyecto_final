@@ -11,6 +11,7 @@ public class Automovil {
 	private String cilindraje;
 	private String precio;
 	private String estado = "Disponible";
+	
 
 	public String getPlaca() {
 		return placa;

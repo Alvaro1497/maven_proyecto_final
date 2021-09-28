@@ -2,16 +2,14 @@ package trabajo_final_auto;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		Scanner sc2 = new Scanner(System.in);
+		Scanner KD = new Scanner(System.in);
 
 		String opcion;
 		String teclado;
@@ -25,7 +23,9 @@ public class Main {
 		String placAu = null;
 		String placCa = null;
 
-		int pocicionDisponible = 0;
+		LocalDate fechaCt;
+		LocalDate fechanueva;
+
 		LocalDate diaHoy = LocalDate.ofYearDay(2021, 11);
 		LocalDate diafin = diaHoy.plusDays(2);
 
@@ -206,22 +206,18 @@ public class Main {
 						ca.setMarca(T2);
 						ca.setModelo(T3);
 						ca.setAñoDefabricación(T4);
-						ca.setPaísFabricación(T5);
+						ca.setAñoDefabricación(T5);
 						ca.setCilindraje(T6);
 						ca.setPrecio(T7);
 						ca.setPeso(T9);
-
 						placCa = ca.getPlaca();
 						System.out.println("Guardado con Exito");
 						break;
-//						
-//						;
 
 					}
 
 				}
 				if (teclado3.equals("B")) {
-
 					System.out.println("iNGRESE PLACA DEL AUTOMOVIL");
 					D1 = sc.nextLine();
 					// ingreso aqui la placa lo comparara con la placa quemada y me mostrara si esta
@@ -261,10 +257,9 @@ public class Main {
 						System.out.println("No se encontro la placa en la base de datos reservada .... ");
 						System.out.println(" ---------------------------------------------------------- ");
 						System.out.println("Buscando placa en los registros actuales");
-
 						if (D1 == placAu) {
 							System.out.println(" Desea alquilar el vehiculo ? (SI / NO) ");
-							String cont = sc2.nextLine();
+							String cont = KD.nextLine();
 							if (cont.equals("si")) {
 								System.out.println("Automovil alquilado con exito");
 								// cambiamos estado
@@ -275,20 +270,6 @@ public class Main {
 									+ au.getEstado() + " año fabricacion: " + au.getAñoDefabricación()
 									+ " País Fabricación" + au.getPaísFabricación() + " Cilindraje "
 									+ au.getCilindraje() + " Precio " + au.getPrecio());
-						} else if (D1 == placCa) {
-							System.out.println(" Desea alquilar la Camioneta ? (SI / NO) ");
-							String cont = sc2.nextLine();
-							if (cont.equals("si")) {
-								System.out.println("Camioneta alquilado con exito");
-								// cambiamos estado
-								ca.setEstado("Alquilado");
-
-							}
-							System.out.println("Placa: " + ca.getPlaca() + " Modelo: " + ca.getModelo() + " Estado: "
-									+ ca.getEstado() + " año fabricacion: " + ca.getAñoDefabricación()
-									+ " País Fabricación" + ca.getPaísFabricación() + " Cilindraje "
-									+ ca.getCilindraje() + " Precio " + ca.getPrecio());
-
 						}
 
 					}
@@ -297,9 +278,71 @@ public class Main {
 				if (teclado3.equals("C")) {
 					System.out.println("iNGRESE PLACA DEL AUTOMOVIL");
 					D2 = sc.nextLine();
+					if (placa1(autoc.getPlaca(), D2)) {
+						System.out.println("Placa: " + autoc.getPlaca() + " Modelo: " + autoc.getModelo() + " Estado: "
+								+ autoc.getEstado() + " Fecha Entrega: "
+								+ autoc.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+								+ " Reservado por: " + autoc.getCedula());
+						System.out.println(" Desea aplzar tiepo de entrega? (SI/NO) ");
+						D3 = sc.nextLine();
+						if (D3.equals("si")) {
+							fechaCt = autoc.getFechaInicio();
+							fechanueva = fechaCt.plusDays(3);
+							autoc.setFechaInicio(fechanueva);
+							System.out.println("Placa: " + autoc.getPlaca() + " Modelo: " + autoc.getModelo()
+									+ " Estado: " + autoc.getEstado() + " Fecha Entrega: "
+									+ autoc.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+									+ " Reservado por: " + autoc.getCedula());
+						} else {
+							System.out.println("La fecha no se Aplaza");
+						}
+					} else if (placa2(autoc1.getPlaca(), D2)) {
+						System.out.println("Placa: " + autoc1.getPlaca() + " Modelo: " + autoc1.getModelo()
+								+ " Estado: " + autoc1.getEstado() + " Fecha Entrega: "
+								+ autoc1.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+								+ " Reservado por: " + autoc1.getCedula());
+						System.out.println(" Desea aplzar tiepo de entrega? (SI/NO) ");
+						D3 = sc.nextLine();
+						if (D3.equals("si")) {
+							fechaCt = autoc1.getFechaInicio();
+							fechanueva = fechaCt.plusDays(3);
+							autoc1.setFechaInicio(fechanueva);
+							System.out.println("Placa: " + autoc1.getPlaca() + " Modelo: " + autoc1.getModelo()
+									+ " Estado: " + autoc1.getEstado() + " Fecha Entrega: "
+									+ autoc1.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+									+ " Reservado por: " + autoc1.getCedula());
+						} else {
+							System.out.println("La fecha no se Aplaza");
+						}
+
+					} else if (placa3(autoc2.getPlaca(), D2)) {
+						System.out.println("Placa: " + autoc2.getPlaca() + " Modelo: " + autoc2.getModelo()
+								+ " Estado: " + autoc2.getEstado() + " Fecha Entrega: "
+								+ autoc2.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+								+ " Reservado por: " + autoc2.getCedula());
+						System.out.println(" Desea aplzar tiepo de entrega? (SI/NO) ");
+						D3 = sc.nextLine();
+						if (D3.equals("si")) {
+							fechaCt = autoc2.getFechaInicio();
+							fechanueva = fechaCt.plusDays(3);
+							autoc2.setFechaInicio(fechanueva);
+							System.out.println("Placa: " + autoc2.getPlaca() + " Modelo: " + autoc2.getModelo()
+									+ " Estado: " + autoc2.getEstado() + " Fecha Entrega: "
+									+ autoc2.getFechaInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+									+ " Reservado por: " + autoc2.getCedula());
+						} else {
+							System.out.println("La fecha no se Aplaza");
+						}
+					}
 
 				}
 
+				break;
+			case "3":
+				System.out.println("Salir");
+				break;
+			default:
+				System.out.println("No ha elegido ninguna opcion valida");
 				break;
 
 			}
@@ -320,14 +363,6 @@ public class Main {
 
 	private static boolean placa3(String string, String buscarplaca3) {
 		return Arrays.asList(string).contains(buscarplaca3);
-	}
-
-	private static boolean placa4(String string, String buscarplaca4) {
-		return Arrays.asList(string).contains(buscarplaca4);
-	}
-
-	private static boolean placa5(String string, String buscarplaca5) {
-		return Arrays.asList(string).contains(buscarplaca5);
 	}
 
 }

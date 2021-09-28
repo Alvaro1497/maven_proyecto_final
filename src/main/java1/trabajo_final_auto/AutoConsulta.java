@@ -13,7 +13,6 @@ public class AutoConsulta {
 	private LocalDate fechafin;
 	private String fecha;
 
-	
 	public String getFecha() {
 		return fecha;
 	}
